@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DragView">
+        <attr name="foregroundImage" format="reference"/>
+        <attr name="backgroundColor" format="string"/>
+        <attr name="dragWidth" format="integer"/>
+        <attr name="dragHeight" format="integer"/>
+        <attr name="welt" format="boolean"/>
+        <attr name="bounce" format="boolean"/>
+        <attr name="animationTime" format="integer"/>
+    </declare-styleable>
+
+</resources>
