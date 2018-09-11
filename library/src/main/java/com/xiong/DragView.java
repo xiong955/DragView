@@ -14,9 +14,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 /**
+ * 拖动控件
+ * 2018/09/07
  * @author: xiong
- * @time: 2018/09/07
- * @说明: 拖动控件
+ * @version 1.0
  */
 public class DragView extends RelativeLayout implements View.OnTouchListener {
 
