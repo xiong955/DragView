@@ -70,9 +70,9 @@ implementation 'com.xiong:dragview:1.0.0'
 
 效果如图：
 <br>
-![贴边](1.gif)
-![回弹](2.gif)
-![时间](3.gif)
+![贴边](https://github.com/xiong955/DragView/blob/master/gif/1.gif)
+![回弹](https://github.com/xiong955/DragView/blob/master/gif/2.gif)
+![时间](https://github.com/xiong955/DragView/blob/master/gif/3.gif)
 <br>
 使用中遇到什么问题请issues反馈<br>
 或者QQ联系我:619291607,备注Git
