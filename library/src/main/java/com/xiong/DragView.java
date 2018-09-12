@@ -1,5 +1,7 @@
 package com.xiong;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,8 +18,9 @@ import android.widget.RelativeLayout;
 /**
  * 拖动控件
  * 2018/09/07
- * @author: xiong
+ *
  * @version 1.0
+ * @author: xiong
  */
 public class DragView extends RelativeLayout implements View.OnTouchListener {
 
@@ -50,8 +53,8 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
     private boolean mBounce;
     private int mAnimationTime;
 
+    private boolean isRunning;
     private LayoutParams layoutParams;
-
     private OnClickListener OnClickListener;
 
     public DragView(Context context) {
@@ -104,7 +107,10 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
     }
 
     public boolean onTouch(View view, MotionEvent event) {
-
+        if(isRunning){
+            return true;
+        }
+        
         final int x = (int) event.getRawX();
         final int y = (int) event.getRawY();
 
@@ -165,6 +171,9 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
      */
     private void moveNearEdge() {
         int lastX, lastY;
+        if (xDistance == 0 || yDistance == 0) {
+            return;
+        }
         if (yDistance < 100) {
             lastY = 0;
             valueAnimatorY(ValueAnimator.ofInt(yDistance, lastY));
@@ -191,6 +200,13 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
             public void onAnimationUpdate(ValueAnimator animation) {
                 layoutParams.leftMargin = (int) animation.getAnimatedValue();
                 mImage.setLayoutParams(layoutParams);
+                isRunning = true;
+            }
+        });
+        valueAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                isRunning = false;
             }
         });
         valueAnimator.start();
@@ -207,6 +223,13 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
             public void onAnimationUpdate(ValueAnimator animation) {
                 layoutParams.topMargin = (int) animation.getAnimatedValue();
                 mImage.setLayoutParams(layoutParams);
+                isRunning = true;
+            }
+        });
+        valueAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                isRunning = false;
             }
         });
         valueAnimator.start();
@@ -226,7 +249,6 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
     public void setAnimationTime(int AnimationTime) {
         this.mAnimationTime = AnimationTime;
     }
-
 
 
     /* 接口回调 */
