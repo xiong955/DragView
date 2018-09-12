@@ -1,8 +1,10 @@
 # DragView
+[ ![Download](https://api.bintray.com/packages/xiong955/maven/dragview/images/download.svg) ](https://bintray.com/xiong955/maven/dragview/_latestVersion)
+<br>
 一个类似IOS小圆点的可拖动控件
 
 ## 使用方式
-implementation 'com.xiong:dragview:1.0.0'
+    implementation 'com.xiong.widget:dragview:1.0.1'
 
 ## 属性相关
 <table>
