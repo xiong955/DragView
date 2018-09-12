@@ -1,10 +1,10 @@
 # DragView
 一个类似IOS小圆点的可拖动控件
 
-##使用方式
+## 使用方式
 implementation 'com.xiong:dragview:1.0.0'
 
-##属性相关
+## 属性相关
 <table>
     <tr>
         <td>animationTime</td>
@@ -36,7 +36,7 @@ implementation 'com.xiong:dragview:1.0.0'
     </tr>
 </table>
 
-##布局文件
+## 布局文件
 
     <FrameLayout>
 
@@ -57,7 +57,7 @@ implementation 'com.xiong:dragview:1.0.0'
 
     </FrameLayout>
 
-##Java代码
+## Java代码
 
     mDragView = findViewById(R.id.drag);
     mDragView.onClickListener(new DragView.OnClickListener() {
