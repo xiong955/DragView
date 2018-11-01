@@ -198,15 +198,19 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
         if (yDistance < 100) {
             lastY = 0;
             valueAnimatorY(ValueAnimator.ofInt(yDistance, lastY));
-        } else if (mLayoutHeight - yDistance < 100) {
+            yDistance = lastY;
+        } else if (mLayoutHeight - yDistance - mImageHeight < 100) {
             lastY = mLayoutHeight - mImageHeight;
             valueAnimatorY(ValueAnimator.ofInt(yDistance, lastY));
+            yDistance = lastY;
         } else if (xDistance + mImageWidth / 2 <= mLayoutWidth / 2) {
             lastX = 0;
             valueAnimatorX(ValueAnimator.ofInt(xDistance, lastX));
+            xDistance = lastX;
         } else {
             lastX = mLayoutWidth - mImageWidth;
             valueAnimatorX(ValueAnimator.ofInt(xDistance, lastX));
+            xDistance = lastX;
         }
     }
 

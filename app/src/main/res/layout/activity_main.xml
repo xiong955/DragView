@@ -47,7 +47,7 @@
         app:bounce="false"
         app:dragHeight="80"
         app:dragWidth="80"
-        app:marginLeft="100"
+        app:marginRight="100"
         app:marginTop="100"
         app:foregroundImage="@mipmap/ic_launcher"
         app:welt="false" />
