@@ -4,7 +4,7 @@
 一个类似IOS小圆点的可拖动控件
 
 ## 使用方式
-    implementation 'com.xiong.widget:dragview:1.0.1'
+    implementation 'com.xiong.widget:dragview:1.0.3'
 
 ## 属性相关
 <table>
@@ -36,6 +36,21 @@
         <td>dragHeight</td>
         <td>拖动控件的高</td>
     </tr>
+    <tr>
+        <td>marginLeft</td>
+        <td>控件居左距离</td>
+    </tr>
+     <tr>
+         <td>marginRight</td>
+         <td>控件居右距离(不能同时设置marginLeft,否则该属性无效)</td>
+     <tr>
+         <td>marginTop</td>
+         <td>控件居顶距离</td>
+     </tr>
+     <tr>
+         <td>marginBottom</td>
+         <td>控件居底距离(不能同时设置marginTop,否则该属性无效)</td>
+     </tr>
 </table>
 
 ## 布局文件
@@ -54,6 +69,8 @@
             app:bounce="true"
             app:dragHeight="60"
             app:dragWidth="60"
+            app:marginRight="100"
+            app:marginTop="100"
             app:foregroundImage="@mipmap/ic_launcher"
             app:welt="true" />
 
