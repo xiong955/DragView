@@ -62,6 +62,8 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
     private LayoutParams layoutParams;
     private OnClickListener OnClickListener;
 
+    private boolean isFirst = true;
+
     public DragView(Context context) {
         this(context, null);
     }
@@ -113,18 +115,21 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
         mImageHeight = mImage.getHeight();
         mLayoutWidth = mViewGroup.getWidth();
         mLayoutHeight = mViewGroup.getHeight();
-        LayoutParams lp = (LayoutParams) mImage.getLayoutParams();
-        if (marginLeft != 0) {
-            lp.leftMargin = marginLeft;
-        } else if (marginRight != 0) {
-            lp.leftMargin = mLayoutWidth - mImageWidth - marginRight;
+        if (isFirst) {
+            LayoutParams lp = (LayoutParams) mImage.getLayoutParams();
+            if (marginLeft != 0) {
+                lp.leftMargin = marginLeft;
+            } else if (marginRight != 0) {
+                lp.leftMargin = mLayoutWidth - mImageWidth - marginRight;
+            }
+            if (marginTop != 0) {
+                lp.topMargin = marginTop;
+            } else if (marginBottom != 0) {
+                lp.topMargin = mLayoutHeight - mImageHeight - marginBottom;
+            }
+            mImage.setLayoutParams(lp);
+            isFirst = false;
         }
-        if (marginTop != 0) {
-            lp.topMargin = marginTop;
-        } else if (marginBottom != 0) {
-            lp.topMargin = mLayoutHeight - mImageHeight - marginBottom;
-        }
-        mImage.setLayoutParams(lp);
     }
 
     public boolean onTouch(View view, MotionEvent event) {
