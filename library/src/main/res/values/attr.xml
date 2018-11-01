@@ -9,6 +9,10 @@
         <attr name="welt" format="boolean"/>
         <attr name="bounce" format="boolean"/>
         <attr name="animationTime" format="integer"/>
+        <attr name="marginLeft" format="integer"/>
+        <attr name="marginTop" format="integer"/>
+        <attr name="marginRight" format="integer"/>
+        <attr name="marginBottom" format="integer"/>
     </declare-styleable>
 
 </resources>

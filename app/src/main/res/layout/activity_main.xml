@@ -26,7 +26,7 @@
 
         <EditText
             android:id="@+id/et1"
-            android:text="1000"
+            android:text="2000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -44,10 +44,12 @@
         android:layout_height="match_parent"
         app:animationTime="200"
         app:backgroundColor="#f9f035"
-        app:bounce="true"
-        app:dragHeight="60"
-        app:dragWidth="60"
+        app:bounce="false"
+        app:dragHeight="80"
+        app:dragWidth="80"
+        app:marginLeft="100"
+        app:marginTop="100"
         app:foregroundImage="@mipmap/ic_launcher"
-        app:welt="true" />
+        app:welt="false" />
 
 </FrameLayout>

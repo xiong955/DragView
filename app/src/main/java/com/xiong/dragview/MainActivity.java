@@ -11,8 +11,8 @@ import com.xiong.DragView;
 public class MainActivity extends AppCompatActivity {
 
     private DragView mDragView;
-    private boolean welt = true;
-    private boolean bounce = true;
+    private boolean welt;
+    private boolean bounce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Touch",Toast.LENGTH_SHORT).show();
             }
         });
+
+        welt =mDragView.getWelt();
+        bounce =mDragView.getBounce();
 
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -44,7 +44,7 @@ publish {
     userOrg = 'xiong955'           //bintray注册的用户名
     groupId = 'com.xiong.widget'   //compile引用时的第1部分groupId
     artifactId = 'dragview'        //compile引用时的第2部分项目名
-    publishVersion = '1.0.1'       //compile引用时的第3部分版本号
+    publishVersion = '1.0.2'       //compile引用时的第3部分版本号
     desc = 'A draggable control similar to an IOS'
     website = 'https://github.com/xiong955/DragView'
 }

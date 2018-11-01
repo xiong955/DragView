@@ -18,8 +18,9 @@ import android.widget.RelativeLayout;
 /**
  * 拖动控件
  * 2018/09/07
+ * update 2018/11/1
  *
- * @version 1.0
+ * @version 1.0.2
  * @author: xiong
  */
 public class DragView extends RelativeLayout implements View.OnTouchListener {
@@ -30,11 +31,11 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
 
     private int xDistance;
     private int yDistance;
-    // 控件 && 宽高
+    // 拖动控件宽高
     private ImageView mImage;
     private int mImageWidth;
     private int mImageHeight;
-    // 载体 && 宽高
+    // 载体布局宽高
     private ViewGroup mViewGroup;
     private int mLayoutWidth;
     private int mLayoutHeight;
@@ -52,6 +53,10 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
     private boolean mWelt;
     private boolean mBounce;
     private int mAnimationTime;
+    private int marginLeft;
+    private int marginTop;
+    private int marginRight;
+    private int marginBottom;
 
     private boolean isRunning;
     private LayoutParams layoutParams;
@@ -80,7 +85,11 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
             height = typedArray.getInt(R.styleable.DragView_dragHeight, 40);
             mWelt = typedArray.getBoolean(R.styleable.DragView_welt, false);
             mBounce = typedArray.getBoolean(R.styleable.DragView_bounce, false);
-            mAnimationTime = typedArray.getInt(R.styleable.DragView_animationTime, 1000);
+            mAnimationTime = typedArray.getInt(R.styleable.DragView_animationTime, 2000);
+            marginLeft = typedArray.getInt(R.styleable.DragView_marginLeft, 0);
+            marginTop = typedArray.getInt(R.styleable.DragView_marginTop, 0);
+            marginRight = typedArray.getInt(R.styleable.DragView_marginRight, 0);
+            marginBottom = typedArray.getInt(R.styleable.DragView_marginBottom, 0);
             typedArray.recycle();
         }
 
@@ -104,13 +113,25 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
         mImageHeight = mImage.getHeight();
         mLayoutWidth = mViewGroup.getWidth();
         mLayoutHeight = mViewGroup.getHeight();
+        LayoutParams lp = (LayoutParams) mImage.getLayoutParams();
+        if (marginLeft != 0) {
+            lp.leftMargin = marginLeft;
+        } else if (marginRight != 0) {
+            lp.leftMargin = mLayoutWidth - mImageWidth - marginRight;
+        }
+        if (marginTop != 0) {
+            lp.topMargin = marginTop;
+        } else if (marginBottom != 0) {
+            lp.topMargin = mLayoutHeight - mImageHeight - marginBottom;
+        }
+        mImage.setLayoutParams(lp);
     }
 
     public boolean onTouch(View view, MotionEvent event) {
-        if(isRunning){
+        if (isRunning) {
             return true;
         }
-        
+
         final int x = (int) event.getRawX();
         final int y = (int) event.getRawY();
 
@@ -235,11 +256,19 @@ public class DragView extends RelativeLayout implements View.OnTouchListener {
         valueAnimator.start();
     }
 
+    public boolean getWelt() {
+        return mWelt;
+    }
+
     public void setWelt(boolean welt) {
         this.mWelt = welt;
         if (welt) {
             moveNearEdge();
         }
+    }
+
+    public boolean getBounce() {
+        return mBounce;
     }
 
     public void setBounce(boolean bounce) {
